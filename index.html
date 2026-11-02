@@ -4,25 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>محفظة إتقان: نموذج توضيحي</title>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f6f5f0; --card:#ffffff; --ink:#1d2a26; --muted:#5f6d68; --line:#e0ded5;
-  --brand:#14634f; --brand-ink:#ffffff; --soft:#e4f0ec; --warn-bg:#fbf1dc; --warn:#7d5a10;
-  --bad-bg:#f9e6e3; --bad:#9a3324; --track:#e9e7df;
+  --bg:#f6f8f7; --card:#ffffff; --ink:#123f35; --muted:#55706a; --line:#dfe8e5;
+  --brand:#23705f; --brand-ink:#ffffff; --soft:#e6f1ee; --warn-bg:#fbf1dc; --warn:#7d5a10;
+  --bad-bg:#f9e6e3; --bad:#9a3324; --track:#e3ebe8; --deep:#134a3e; --deep2:#0d3028;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#121816; --card:#1b2421; --ink:#e8efec; --muted:#9dada7; --line:#2e3a36;
   --brand:#4fbf9f; --brand-ink:#08201a; --soft:#1f3630; --warn-bg:#3a2f14; --warn:#eccb7c;
-  --bad-bg:#3d211c; --bad:#f0a598; --track:#2a3531;
+  --bad-bg:#3d211c; --bad:#f0a598; --track:#2a3531; --deep:#134a3e; --deep2:#0d3028;
 }}
 :root[data-theme="dark"]{
   --bg:#121816; --card:#1b2421; --ink:#e8efec; --muted:#9dada7; --line:#2e3a36;
   --brand:#4fbf9f; --brand-ink:#08201a; --soft:#1f3630; --warn-bg:#3a2f14; --warn:#eccb7c;
-  --bad-bg:#3d211c; --bad:#f0a598; --track:#2a3531;
+  --bad-bg:#3d211c; --bad:#f0a598; --track:#2a3531; --deep:#134a3e; --deep2:#0d3028;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.75 "IBM Plex Sans Arabic",Tahoma,sans-serif}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.75 "Alexandria","IBM Plex Sans Arabic",Tahoma,sans-serif}
+.hero{background:linear-gradient(160deg,var(--deep),var(--deep2));color:#fff;border-radius:16px;padding:40px 24px;text-align:center;margin-bottom:16px}
+.hero h1{font-size:30px;color:#fff}
+.hero p{color:#d5e6e1;margin:8px auto 20px;max-width:58ch}
+.hero .btn{background:#fff;color:#134a3e;border-color:#fff}
+.hero .btn.alt{background:none;color:#fff;border-color:#a9cbc2}
+.hero .row{justify-content:center}
 button,input,select,textarea{font:inherit;color:inherit}
 .notice{background:var(--warn-bg);color:var(--warn);text-align:center;padding:8px 16px;font-size:14px}
 header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
@@ -49,7 +55,7 @@ h2{font-size:19px;margin:0 0 10px}
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 ol.steps{list-style:none;margin:0;padding:0;counter-reset:s}
 ol.steps li{counter-increment:s;position:relative;padding:0 40px 14px 0}
-ol.steps li::before{content:counter(s);position:absolute;right:0;top:2px;width:28px;height:28px;border-radius:50%;background:var(--soft);color:var(--brand);font-weight:700;text-align:center;line-height:28px;font-size:14px}
+ol.steps li::before{content:counter(s);position:absolute;right:0;top:2px;width:28px;height:28px;border-radius:50%;background:var(--brand);color:var(--brand-ink);font-weight:700;text-align:center;line-height:28px;font-size:14px}
 ol.steps b{display:block}
 ol.steps span{color:var(--muted);font-size:15px}
 label{display:block;font-weight:500;margin-bottom:14px}
@@ -133,8 +139,9 @@ function toast(msg){
 const views = {
   home(){
     const open = state.requests.filter(r => r.status === 'review').length;
-    return `<h1>حتى لا يتوقف تطبيق نافع عند ١٥ دولارًا</h1>
-    <p class="lead">صندوق يموّله المتبرعون، يغطي تكلفة الاختبار المغلق الذي يشترطه Google Play، للمطورين الذين تعذّر عليهم توفيرها، بعد مراجعة المجتمع لطلباتهم.</p>
+    return `<section class="hero"><h1>حتى لا يتوقف تطبيق نافع عند ١٥ دولارًا</h1>
+    <p>صندوق يموّله المتبرعون، يغطي تكلفة الاختبار المغلق الذي يشترطه Google Play، للمطورين الذين تعذّر عليهم توفيرها، بعد مراجعة المجتمع لطلباتهم.</p>
+    <div class="row"><button class="btn" data-go="apply">تقدّم بطلب</button><button class="btn alt" data-go="donate">تبرّع</button></div></section>
     <div class="stats">
       <div class="stat"><b>${ar(state.balance)} $</b><span>الرصيد الحالي</span></div>
       <div class="stat"><b>${ar(Math.floor(state.balance/PRICE))}</b><span>تطبيقًا يكفيها الرصيد</span></div>
