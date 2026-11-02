@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>محفظة إتقان: نموذج توضيحي</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f5f0; --card:#ffffff; --ink:#1d2a26; --muted:#5f6d68; --line:#e0ded5;
+  --brand:#14634f; --brand-ink:#ffffff; --soft:#e4f0ec; --warn-bg:#fbf1dc; --warn:#7d5a10;
+  --bad-bg:#f9e6e3; --bad:#9a3324; --track:#e9e7df;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121816; --card:#1b2421; --ink:#e8efec; --muted:#9dada7; --line:#2e3a36;
+  --brand:#4fbf9f; --brand-ink:#08201a; --soft:#1f3630; --warn-bg:#3a2f14; --warn:#eccb7c;
+  --bad-bg:#3d211c; --bad:#f0a598; --track:#2a3531;
+}}
+:root[data-theme="dark"]{
+  --bg:#121816; --card:#1b2421; --ink:#e8efec; --muted:#9dada7; --line:#2e3a36;
+  --brand:#4fbf9f; --brand-ink:#08201a; --soft:#1f3630; --warn-bg:#3a2f14; --warn:#eccb7c;
+  --bad-bg:#3d211c; --bad:#f0a598; --track:#2a3531;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.75 "IBM Plex Sans Arabic",Tahoma,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+.notice{background:var(--warn-bg);color:var(--warn);text-align:center;padding:8px 16px;font-size:14px}
+header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.bar{max-width:960px;margin:auto;padding:10px 16px;display:flex;align-items:center;gap:6px 20px;flex-wrap:wrap}
+.logo{font-weight:700;font-size:19px;color:var(--brand)}
+nav{display:flex;gap:4px;overflow-x:auto;max-width:100%}
+nav button{background:none;border:0;padding:6px 12px;border-radius:8px;cursor:pointer;color:var(--muted);white-space:nowrap}
+nav button[aria-current="page"]{background:var(--soft);color:var(--brand);font-weight:600}
+main{max-width:960px;margin:auto;padding:24px 16px 56px}
+h1{font-size:26px;line-height:1.4;margin:0 0 6px}
+h2{font-size:19px;margin:0 0 10px}
+.lead{color:var(--muted);margin:0 0 22px;max-width:62ch}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:16px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:16px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.stat b{display:block;font-size:26px;line-height:1.3;font-variant-numeric:tabular-nums}
+.stat span{color:var(--muted);font-size:14px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:700px){.two{grid-template-columns:1fr}}
+.btn{background:var(--brand);color:var(--brand-ink);border:1px solid var(--brand);border-radius:8px;padding:8px 16px;cursor:pointer;font-weight:600}
+.btn.alt{background:none;color:var(--brand)}
+.btn.no{background:none;color:var(--bad);border-color:var(--bad)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+ol.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+ol.steps li{counter-increment:s;position:relative;padding:0 40px 14px 0}
+ol.steps li::before{content:counter(s);position:absolute;right:0;top:2px;width:28px;height:28px;border-radius:50%;background:var(--soft);color:var(--brand);font-weight:700;text-align:center;line-height:28px;font-size:14px}
+ol.steps b{display:block}
+ol.steps span{color:var(--muted);font-size:15px}
+label{display:block;font-weight:500;margin-bottom:14px}
+label small{display:block;font-weight:400;color:var(--muted)}
+input[type=text],input[type=url],input[type=number],textarea,select{display:block;width:100%;margin-top:4px;padding:8px 10px;background:var(--bg);border:1px solid var(--line);border-radius:8px}
+input:focus-visible,textarea:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--brand);outline-offset:1px}
+label.check{display:flex;gap:8px;align-items:flex-start;font-weight:400;margin-bottom:8px}
+label.check input{margin-top:7px;flex:none}
+.tag{display:inline-block;font-size:13px;padding:1px 10px;border-radius:99px;background:var(--soft);color:var(--brand);font-weight:500}
+.tag.wait{background:var(--warn-bg);color:var(--warn)}
+.tag.no{background:var(--bad-bg);color:var(--bad)}
+.head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap}
+.meta{color:var(--muted);font-size:14px}
+.meter{height:8px;background:var(--track);border-radius:99px;overflow:hidden;margin:6px 0 4px}
+.meter i{display:block;height:100%;background:var(--brand)}
+.crit{list-style:none;padding:0;margin:10px 0;display:grid;grid-template-columns:1fr 1fr;gap:2px 16px;font-size:15px}
+@media (max-width:700px){.crit{grid-template-columns:1fr}}
+.crit li::before{content:"✓ ";color:var(--brand);font-weight:700}
+.crit li.off::before{content:"✕ ";color:var(--bad)}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:right;padding:9px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+td.wrap{white-space:normal;min-width:190px}
+th{color:var(--muted);font-weight:500}
+.num{font-variant-numeric:tabular-nums;direction:ltr;text-align:left}
+.plus{color:var(--brand);font-weight:600}
+.amounts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.amounts button{flex:1;min-width:70px;padding:10px;border:1px solid var(--line);background:var(--bg);border-radius:8px;cursor:pointer;font-weight:600}
+.amounts button[aria-pressed="true"]{background:var(--soft);border-color:var(--brand);color:var(--brand)}
+.toast{position:fixed;bottom:18px;inset-inline:16px;margin:auto;max-width:440px;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;text-align:center;z-index:9}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="notice">نموذج توضيحي لمقترح من عضو مجتمع إتقان "أحمد التميمي". ليس خدمة رسمية، والأسماء والأرقام أمثلة، ولا يُجمع فيه أي مال.</div>
+<header><div class="bar">
+  <div class="logo">محفظة إتقان</div>
+  <nav id="nav" aria-label="الأقسام"></nav>
+</div></header>
+<main id="app"></main>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+const PRICE = 15;
+const VOTES_NEEDED = 3;
+const CRITERIA = [
+  'التطبيق جاهز ومرفوع على مسار الاختبار المغلق',
+  'أول تطبيق للمطور أو بلا مصدر دخل منه',
+  'مجاني للمستخدمين وبلا إعلانات مزعجة',
+  'محتواه نافع ولا يخالف الضوابط الشرعية',
+  'له سياسة خصوصية منشورة ووصف واضح',
+  'تعذّر توفير ١٢ مختبِرًا بالطرق المجانية'
+];
+const state = {
+  page: 'home', amount: 25,
+  balance: 340, donated: 520, funded: 12,
+  requests: [
+    {id:1,name:'رفيق الأذكار',dev:'مطور (مثال ١)',desc:'أذكار الصباح والمساء بتنبيهات هادئة، يعمل دون إنترنت.',reason:'أعمل وحدي ولا أعرف ١٢ شخصًا لديهم هواتف أندرويد.',crit:[1,1,1,1,1,1],votes:2,status:'review',voted:false},
+    {id:2,name:'حلقتي',dev:'مطورة (مثال ٢)',desc:'متابعة حفظ طالبات الحلقة وتسجيل المراجعة اليومية.',reason:'طالبة جامعية، ورسوم الحساب استنفدت ما ادخرته.',crit:[1,1,1,1,1,1],votes:1,status:'review',voted:false},
+    {id:3,name:'زكاتي',dev:'مطور (مثال ٣)',desc:'حاسبة زكاة المال والذهب بأسعار يومية.',reason:'أحتاج دعمًا للاختبار.',crit:[0,1,1,1,0,1],votes:0,status:'review',voted:false}
+  ],
+  ledger: [
+    {date:'٢٨ أكتوبر',what:'تبرع من فاعل خير',amt:100},
+    {date:'٢٥ أكتوبر',what:'خدمة اختبار: «مواقيتي»، دُفعت مباشرة لمزود الخدمة',amt:-15},
+    {date:'٢١ أكتوبر',what:'خدمة اختبار: «قبلة السفر»، دُفعت مباشرة لمزود الخدمة',amt:-15},
+    {date:'١٨ أكتوبر',what:'تبرع من فاعل خير',amt:50}
+  ]
+};
+const PAGES = [['home','الرئيسية'],['apply','تقدّم بطلب'],['review','مراجعة الطلبات'],['ledger','سجل الشفافية'],['donate','تبرّع']];
+const ar = n => Number(n).toLocaleString('ar-EG');
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const app = document.getElementById('app');
+
+function go(p){ state.page = p; render(); window.scrollTo(0,0); }
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.hidden = false;
+  clearTimeout(toast.t); toast.t = setTimeout(() => t.hidden = true, 3000);
+}
+
+const views = {
+  home(){
+    const open = state.requests.filter(r => r.status === 'review').length;
+    return `<h1>حتى لا يتوقف تطبيق نافع عند ١٥ دولارًا</h1>
+    <p class="lead">صندوق يموّله المتبرعون، يغطي تكلفة الاختبار المغلق الذي يشترطه Google Play، للمطورين الذين تعذّر عليهم توفيرها، بعد مراجعة المجتمع لطلباتهم.</p>
+    <div class="stats">
+      <div class="stat"><b>${ar(state.balance)} $</b><span>الرصيد الحالي</span></div>
+      <div class="stat"><b>${ar(Math.floor(state.balance/PRICE))}</b><span>تطبيقًا يكفيها الرصيد</span></div>
+      <div class="stat"><b>${ar(state.funded)}</b><span>تطبيقًا دُعم حتى الآن</span></div>
+      <div class="stat"><b>${ar(open)}</b><span>طلبات قيد المراجعة</span></div>
+    </div>
+    <div class="two">
+      <div class="card"><h2>كيف تعمل؟</h2><ol class="steps">
+        <li><b>يتقدّم المطور بطلب</b><span>يصف تطبيقه ويقرّ بالشروط.</span></li>
+        <li><b>يراجع المجتمع الطلب</b><span>يصوّت أعضاء موثوقون وفق معايير معلنة.</span></li>
+        <li><b>يعتمد المشرفان الصرف</b><span>يُدفع لمزود الخدمة مباشرة، ولا يُسلَّم نقد لأحد.</span></li>
+        <li><b>يُنشر كل شيء في السجل</b><span>وينشر المطور نتيجة تجربته بعد النشر.</span></li>
+      </ol></div>
+      <div class="card"><h2>شارك</h2>
+        <p class="meta">دولارات قليلة تفتح الطريق لتطبيق كامل، وكل دولار يظهر في السجل العام.</p>
+        <div class="row">
+          <button class="btn" data-go="donate">تبرّع</button>
+          <button class="btn alt" data-go="apply">تقدّم بطلب</button>
+          <button class="btn alt" data-go="ledger">اطّلع على السجل</button>
+        </div>
+      </div>
+    </div>`;
+  },
+  apply(){
+    return `<h1>طلب دعم للاختبار المغلق</h1>
+    <p class="lead">يُعرض طلبك على المراجعين الموثوقين خلال أسبوع. لا يُطلب منك رفع هوية أو أي بيانات بنكية هنا.</p>
+    <form class="card" id="applyForm">
+      <label>اسم التطبيق<input type="text" name="name" required></label>
+      <label>ماذا يفعل التطبيق؟<textarea name="desc" rows="2" required></textarea></label>
+      <label>رابط الانضمام إلى الاختبار المغلق<small>يتيح للمراجعين تجربة التطبيق بأنفسهم.</small><input type="url" name="link" dir="ltr" placeholder="https://play.google.com/apps/testing/..."></label>
+      <label>رابط سياسة الخصوصية<input type="url" name="privacy" dir="ltr" placeholder="https://"></label>
+      <label>لماذا تحتاج إلى الدعم؟<small>جملتان تكفيان، ولا يلزم ذكر تفاصيل مالية شخصية.</small><textarea name="reason" rows="2" required></textarea></label>
+      <h2>أُقرّ بما يلي</h2>
+      ${CRITERIA.map((c,i) => `<label class="check"><input type="checkbox" name="c${i}"> ${c}</label>`).join('')}
+      <label class="check"><input type="checkbox" required> <span>سأنشر نتيجة تجربتي بعد انتهاء الاختبار، وأعلم أن الدعم مرة واحدة لكل تطبيق.</span></label>
+      <div class="row" style="margin-top:14px"><button class="btn">إرسال الطلب</button><span class="meta">الدعم المطلوب: ${ar(PRICE)} دولارًا</span></div>
+    </form>`;
+  },
+  review(){
+    return `<h1>مراجعة الطلبات</h1>
+    <p class="lead">يلزم ${ar(VOTES_NEEDED)} موافقات من المراجعين، ولا يصوّت أحد على طلب له صلة به. اضغط «أوافق» لترى ما يحدث عند اكتمال العدد.</p>
+    ${state.requests.map(r => {
+      const tag = r.status === 'funded' ? '<span class="tag">تمت الموافقة والصرف</span>'
+                : r.status === 'rejected' ? '<span class="tag no">أُعيد للاستكمال</span>'
+                : '<span class="tag wait">قيد المراجعة</span>';
+      return `<article class="card">
+        <div class="head"><div><h2 style="margin:0">${esc(r.name)}</h2><div class="meta">${esc(r.dev)}</div></div>${tag}</div>
+        <p style="margin:10px 0 4px">${esc(r.desc)}</p>
+        <p class="meta" style="margin:0">سبب الطلب: ${esc(r.reason)}</p>
+        <ul class="crit">${CRITERIA.map((c,i) => `<li class="${r.crit[i]?'':'off'}">${c}</li>`).join('')}</ul>
+        <div class="meter" role="img" aria-label="الموافقات"><i style="width:${Math.min(r.votes/VOTES_NEEDED,1)*100}%"></i></div>
+        <div class="meta">${ar(r.votes)} من ${ar(VOTES_NEEDED)} موافقات</div>
+        ${r.status === 'review' ? `<div class="row" style="margin-top:10px">
+          <button class="btn" data-vote="${r.id}" ${r.voted?'disabled':''}>${r.voted?'تم تسجيل صوتك':'أوافق'}</button>
+          <button class="btn no" data-reject="${r.id}">يحتاج استكمالًا</button></div>` : ''}
+      </article>`;
+    }).join('')}`;
+  },
+  ledger(){
+    const inn = state.ledger.filter(l => l.amt > 0).reduce((a,l) => a + l.amt, 0);
+    const out = state.ledger.filter(l => l.amt < 0).reduce((a,l) => a - l.amt, 0);
+    return `<h1>سجل الشفافية</h1>
+    <p class="lead">كل حركة تدخل الصندوق أو تخرج منه تظهر هنا، دون كشف هوية المتبرعين. وتُنشر مراجعة ربع سنوية يوقّعها عضوان من خارج فريق الصرف.</p>
+    <div class="stats">
+      <div class="stat"><b>${ar(state.balance)} $</b><span>الرصيد الحالي</span></div>
+      <div class="stat"><b>${ar(inn)} $</b><span>وارد هذا الشهر</span></div>
+      <div class="stat"><b>${ar(out)} $</b><span>منصرف هذا الشهر</span></div>
+    </div>
+    <div class="card tablewrap"><table>
+      <thead><tr><th>التاريخ</th><th>البيان</th><th>المبلغ</th></tr></thead>
+      <tbody>${state.ledger.map(l => `<tr><td>${l.date}</td><td class="wrap">${esc(l.what)}</td><td class="num ${l.amt>0?'plus':''}">${l.amt>0?'+':'−'}${ar(Math.abs(l.amt))} $</td></tr>`).join('')}</tbody>
+    </table></div>`;
+  },
+  donate(){
+    const apps = Math.floor(state.amount/PRICE);
+    return `<h1>تبرّع لدعم مطور ناشئ</h1>
+    <p class="lead">هذه صدقة عامة لدعم المشاريع النافعة، ولا تُحتسب من الزكاة ما لم يرد بذلك رأي شرعي معتمد.</p>
+    <div class="card" style="max-width:480px">
+      <div class="amounts">${[15,25,50,100].map(a => `<button data-amt="${a}" aria-pressed="${a===state.amount}">${ar(a)} $</button>`).join('')}</div>
+      <p class="meta">${apps>0?`يكفي مبلغك لتغطية اختبار ${apps===1?'تطبيق واحد':ar(apps)+' تطبيقات'}.`:''}</p>
+      <button class="btn" id="donateBtn" style="width:100%">تجربة التبرع (لن يُخصم أي مال)</button>
+      <p class="meta" style="margin:10px 0 0">في النسخة الفعلية ينتقل المتبرع إلى بوابة دفع خارجية تختارها إدارة المجتمع. لا توجد هنا أي خانة لبيانات البطاقة.</p>
+    </div>`;
+  }
+};
+
+function render(){
+  document.getElementById('nav').innerHTML = PAGES.map(([k,l]) =>
+    `<button data-go="${k}" ${state.page===k?'aria-current="page"':''}>${l}</button>`).join('');
+  app.innerHTML = views[state.page]();
+}
+
+document.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.go) go(b.dataset.go);
+  if (b.dataset.amt) { state.amount = +b.dataset.amt; render(); }
+  if (b.dataset.vote) {
+    const r = state.requests.find(x => x.id == b.dataset.vote);
+    r.votes++; r.voted = true;
+    if (r.votes >= VOTES_NEEDED) {
+      r.status = 'funded'; state.balance -= PRICE; state.funded++;
+      state.ledger.unshift({date:'اليوم',what:`خدمة اختبار: «${r.name}»، دُفعت مباشرة لمزود الخدمة`,amt:-PRICE});
+      toast('اكتملت الموافقات، وسُجّل الصرف في سجل الشفافية');
+    } else toast('سُجّل صوتك');
+    render();
+  }
+  if (b.dataset.reject) {
+    state.requests.find(x => x.id == b.dataset.reject).status = 'rejected';
+    toast('أُعيد الطلب إلى المطور مع الملاحظات'); render();
+  }
+  if (b.id === 'donateBtn') {
+    state.balance += state.amount; state.donated += state.amount;
+    state.ledger.unshift({date:'اليوم',what:'تبرع من فاعل خير',amt:state.amount});
+    toast('تجربة فقط: أُضيف المبلغ للسجل، ولم يُخصم أي مال'); go('ledger');
+  }
+});
+document.addEventListener('submit', e => {
+  if (e.target.id !== 'applyForm') return;
+  e.preventDefault();
+  const f = new FormData(e.target);
+  state.requests.unshift({id:Date.now(),name:f.get('name'),dev:'طلب جديد',desc:f.get('desc'),reason:f.get('reason'),
+    crit:CRITERIA.map((_,i) => f.get('c'+i) ? 1 : 0),votes:0,status:'review',voted:false});
+  toast('وصل طلبك إلى قائمة المراجعة'); go('review');
+});
+render();
+</script>
+</body>
+</html>
