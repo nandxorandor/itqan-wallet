@@ -107,25 +107,25 @@ const CRITERIA = [
   'مجاني للمستخدمين وبلا إعلانات مزعجة',
   'محتواه نافع ولا يخالف الضوابط الشرعية',
   'له سياسة خصوصية منشورة ووصف واضح',
-  'تعذّر توفير ١٢ مختبِرًا بالطرق المجانية'
+  'تعذّر توفير 12 مختبِرًا بالطرق المجانية'
 ];
 const state = {
   page: 'home', amount: 25,
   balance: 340, donated: 520, funded: 12,
   requests: [
-    {id:1,name:'رفيق الأذكار',dev:'مطور (مثال ١)',desc:'أذكار الصباح والمساء بتنبيهات هادئة، يعمل دون إنترنت.',reason:'أعمل وحدي ولا أعرف ١٢ شخصًا لديهم هواتف أندرويد.',crit:[1,1,1,1,1,1],votes:2,status:'review',voted:false},
-    {id:2,name:'حلقتي',dev:'مطورة (مثال ٢)',desc:'متابعة حفظ طالبات الحلقة وتسجيل المراجعة اليومية.',reason:'طالبة جامعية، ورسوم الحساب استنفدت ما ادخرته.',crit:[1,1,1,1,1,1],votes:1,status:'review',voted:false},
-    {id:3,name:'زكاتي',dev:'مطور (مثال ٣)',desc:'حاسبة زكاة المال والذهب بأسعار يومية.',reason:'أحتاج دعمًا للاختبار.',crit:[0,1,1,1,0,1],votes:0,status:'review',voted:false}
+    {id:1,name:'رفيق الأذكار',dev:'مطور (مثال 1)',desc:'أذكار الصباح والمساء بتنبيهات هادئة، يعمل دون إنترنت.',reason:'أعمل وحدي ولا أعرف 12 شخصًا لديهم هواتف أندرويد.',crit:[1,1,1,1,1,1],votes:2,status:'review',voted:false},
+    {id:2,name:'حلقتي',dev:'مطورة (مثال 2)',desc:'متابعة حفظ طالبات الحلقة وتسجيل المراجعة اليومية.',reason:'طالبة جامعية، ورسوم الحساب استنفدت ما ادخرته.',crit:[1,1,1,1,1,1],votes:1,status:'review',voted:false},
+    {id:3,name:'زكاتي',dev:'مطور (مثال 3)',desc:'حاسبة زكاة المال والذهب بأسعار يومية.',reason:'أحتاج دعمًا للاختبار.',crit:[0,1,1,1,0,1],votes:0,status:'review',voted:false}
   ],
   ledger: [
-    {date:'٢٨ أكتوبر',what:'تبرع من فاعل خير',amt:100},
-    {date:'٢٥ أكتوبر',what:'خدمة اختبار: «مواقيتي»، دُفعت مباشرة لمزود الخدمة',amt:-15},
-    {date:'٢١ أكتوبر',what:'خدمة اختبار: «قبلة السفر»، دُفعت مباشرة لمزود الخدمة',amt:-15},
-    {date:'١٨ أكتوبر',what:'تبرع من فاعل خير',amt:50}
+    {date:'28 أكتوبر',what:'تبرع من فاعل خير',amt:100},
+    {date:'25 أكتوبر',what:'خدمة اختبار: «مواقيتي»، دُفعت مباشرة لمزود الخدمة',amt:-15},
+    {date:'21 أكتوبر',what:'خدمة اختبار: «قبلة السفر»، دُفعت مباشرة لمزود الخدمة',amt:-15},
+    {date:'18 أكتوبر',what:'تبرع من فاعل خير',amt:50}
   ]
 };
 const PAGES = [['home','الرئيسية'],['apply','تقدّم بطلب'],['review','مراجعة الطلبات'],['ledger','سجل الشفافية'],['donate','تبرّع']];
-const ar = n => Number(n).toLocaleString('ar-EG');
+const ar = n => Number(n).toLocaleString('en-US');
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const app = document.getElementById('app');
 
@@ -139,7 +139,7 @@ function toast(msg){
 const views = {
   home(){
     const open = state.requests.filter(r => r.status === 'review').length;
-    return `<section class="hero"><h1>حتى لا يتوقف تطبيق نافع عند ١٥ دولارًا</h1>
+    return `<section class="hero"><h1>حتى لا يتوقف تطبيق نافع عند 15 دولارًا</h1>
     <p>صندوق يموّله المتبرعون، يغطي تكلفة الاختبار المغلق الذي يشترطه Google Play، للمطورين الذين تعذّر عليهم توفيرها، بعد مراجعة المجتمع لطلباتهم.</p>
     <div class="row"><button class="btn" data-go="apply">تقدّم بطلب</button><button class="btn alt" data-go="donate">تبرّع</button></div></section>
     <div class="stats">
