@@ -44,10 +44,6 @@ header { background:#fff; border-bottom:1px solid var(--line); }
 .sep { opacity:.5; }
 .tbtn { flex:none; background:none; border:0; color:#fff; opacity:.85; cursor:pointer; padding:0 12px; font-size:15px; }
 .tbtn:hover { opacity:1; }
-@media (prefers-reduced-motion: reduce) {
-  .track { animation:none; }
-  .viewport { overflow-x:auto; }
-}
 
 /* Layout */
 .wrap { max-width:1180px; margin:0 auto; padding:20px 16px 40px; display:grid; grid-template-columns:250px 1fr; gap:26px; }
@@ -79,7 +75,6 @@ aside .gap { height:12px; }
 .askbtn::before, .askbtn::after { content:""; position:absolute; inset:0; border-radius:30px; border:2px solid #22b58f; z-index:-1; animation:ring 2.4s ease-out infinite; }
 .askbtn::after { animation-delay:1.2s; }
 @keyframes ring { 0% { transform:scale(1); opacity:.8; } 100% { transform:scale(1.6,2.1); opacity:0; } }
-@media (prefers-reduced-motion: reduce) { .askbtn::before, .askbtn::after { animation:none; opacity:0; } }
 .askbtn img { height:28px; width:28px; object-fit:contain; background:#fff; border-radius:50%; padding:3px; }
 .chat { position:fixed; left:20px; bottom:20px; z-index:21; width:min(380px,calc(100vw - 32px)); border-radius:20px; overflow:hidden; background:#f4f6f5; color:#22262b; box-shadow:0 18px 50px rgba(10,50,40,.3); border:1px solid #d9e2df; font-size:14px; line-height:1.7; display:none; }
 .chat.open { display:block; }
