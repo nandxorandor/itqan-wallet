@@ -33,7 +33,10 @@ header { background:#fff; border-bottom:1px solid var(--line); }
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
           mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); }
 .track { display:flex; width:max-content; height:100%; align-items:center; animation:scroll 45s linear infinite; }
-.ticker:hover .track, .ticker:focus-within .track, .ticker.paused .track { animation-play-state:paused; }
+.ticker.hovering .track, .ticker.paused .track { animation-play-state:paused; }
+.ticker.hidden { display:none; }
+.tshow { display:none; position:fixed; top:64px; right:16px; z-index:15; border:0; border-radius:20px; padding:4px 12px; background:linear-gradient(135deg,#17705c,#0e4f41); color:#fff; font:700 12.5px "Segoe UI",Tahoma,sans-serif; cursor:pointer; box-shadow:0 4px 12px rgba(10,50,40,.25); }
+.tshow.on { display:block; }
 @keyframes scroll { from { transform:translateX(-50%); } to { transform:translateX(0); } }
 .item { direction:rtl; display:flex; align-items:center; gap:8px; padding:0 22px; white-space:nowrap; font-size:13.5px; }
 .item:hover .t { text-decoration:underline; }
@@ -130,6 +133,8 @@ aside .gap { height:12px; }
     <button class="tbtn" id="close" title="إخفاء الشريط" aria-label="إخفاء الشريط">✕</button>
   </div>
 </div>
+
+<button class="tshow" id="tshow" title="إظهار الشريط">▾ نبض إتقان</button>
 
 <div class="wrap">
   <aside>
@@ -256,7 +261,21 @@ pause.addEventListener("click", () => {
   pause.textContent = p ? "▶" : "⏸";
   pause.title = p ? "تشغيل" : "إيقاف مؤقت";
 });
-document.getElementById("close").addEventListener("click", () => ticker.remove());
+// Pause only while the pointer is over the strip (a click leaves keyboard
+// focus inside it, so pausing on focus kept it stopped after the mouse left).
+const viewport = ticker.querySelector(".viewport");
+viewport.addEventListener("pointerenter", () => ticker.classList.add("hovering"));
+viewport.addEventListener("pointerleave", () => ticker.classList.remove("hovering"));
+
+// Hide, with a small button to bring it back (in the real extension the
+// choice would be remembered in the member's browser).
+const tshow = document.getElementById("tshow");
+document.getElementById("close").addEventListener("click", () => {
+  ticker.classList.add("hidden"); ticker.classList.remove("hovering"); tshow.classList.add("on");
+});
+tshow.addEventListener("click", () => {
+  ticker.classList.remove("hidden"); tshow.classList.remove("on");
+});
 </script>
 </body>
 </html>
