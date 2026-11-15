@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>نماذج الاتفاقيات: تصور</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.tgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px; }
+.tcard { background:#fff; border-radius:16px; box-shadow:0 1px 4px rgba(0,0,0,.08); padding:16px; display:flex; flex-direction:column; gap:6px; }
+.tcard .ic { font-size:24px; }
+.tcard .foot { display:flex; gap:6px; margin-top:auto; padding-top:8px; }
+.doc { background:#fff; border-radius:16px; box-shadow:0 1px 4px rgba(0,0,0,.08); padding:22px 26px; margin-top:16px; font-family:"Noto Naskh Arabic","Traditional Arabic",serif; font-size:15px; line-height:2; }
+.doc h2 { text-align:center; font-family:"Segoe UI",Tahoma,sans-serif; }
+.doc ol { padding-inline-start:22px; }
+.doc .blank { display:inline-block; min-width:120px; border-bottom:1px dotted #999; }
+.warn { background:#fff4e5; border:1px solid #f3d3a4; color:#6b4300; border-radius:10px; padding:8px 12px; font-size:12.5px; margin-bottom:14px; }
+</style>
+</head>
+<body data-page="templates">
+<div id="hero"></div>
+<div class="wrap">
+  <aside id="aside"></aside>
+  <main>
+    <div id="tabs"></div>
+
+    <div class="warn">⚠️ <b>نماذج للاسترشاد فقط.</b> يُقترح أن يراجعها مختص شرعي وقانوني مرة واحدة قبل اعتمادها في الموقع، ويبقى لكل طرفين أن يعدّلا ما يناسبهما.</div>
+
+    <div class="tgrid">
+      <div class="tcard">
+        <span class="ic">🔒</span><b>اتفاقية السرية المبسطة</b>
+        <span class="meta">صفحة واحدة: لا تُستخدم الفكرة ولا تُنشر دون إذن صاحبها.</span>
+        <span class="meta">يوافق عليها طالب التواصل بضغطة، قبل أن تُكشف له الفكرة.</span>
+        <div class="foot"><a class="btn small" href="#nda">عرض</a><button class="btn small ghost" onclick="toast('في الموقع الحقيقي: تنزيل بصيغة PDF أو Word.')">تنزيل</button></div>
+      </div>
+      <div class="tcard">
+        <span class="ic">🤝</span><b>اتفاقية مشاركة</b>
+        <span class="meta">شريكان أو أكثر بجهد أو مال، والربح بنسبة متفق عليها، والخسارة على قدر رأس المال.</span>
+        <div class="foot"><button class="btn small" onclick="toast('نموذج توضيحي: يُكتب نصه بعد مراجعة مختص.')">عرض</button></div>
+      </div>
+      <div class="tcard">
+        <span class="ic">💰</span><b>اتفاقية مضاربة</b>
+        <span class="meta">مال من طرف وعمل من طرف، والربح بنسبة شائعة متفق عليها، لا بمبلغ مقطوع.</span>
+        <div class="foot"><button class="btn small" onclick="toast('نموذج توضيحي: يُكتب نصه بعد مراجعة مختص.')">عرض</button></div>
+      </div>
+      <div class="tcard">
+        <span class="ic">💼</span><b>اتفاق عمل بأجر</b>
+        <span class="meta">مهمة محددة، وأجر محدد، وموعد تسليم، ولمن تعود ملكية العمل.</span>
+        <div class="foot"><button class="btn small" onclick="toast('نموذج توضيحي: يُكتب نصه بعد مراجعة مختص.')">عرض</button></div>
+      </div>
+      <div class="tcard">
+        <span class="ic">🌱</span><b>تعهد النسبة الوقفية</b>
+        <span class="meta">نسبة من الأرباح يتعهد بها الشركاء لعمل خيري أو لدعم مجتمع إتقان، وتظهر شارة على الفرصة.</span>
+        <div class="foot"><button class="btn small" onclick="toast('نموذج توضيحي: يُكتب نصه بعد مراجعة مختص.')">عرض</button></div>
+      </div>
+      <div class="tcard">
+        <span class="ic">📝</span><b>محضر اتفاق أولي</b>
+        <span class="meta">بعد أول مكالمة: ما اتفقنا عليه، ومن يفعل ماذا، وموعد المراجعة القادمة.</span>
+        <div class="foot"><button class="btn small" onclick="toast('نموذج توضيحي: يُكتب نصه بعد مراجعة مختص.')">عرض</button></div>
+      </div>
+    </div>
+
+    <div class="doc" id="nda">
+      <h2>اتفاقية سرية مبسطة <span class="meta">(مثال)</span></h2>
+      <p>بين صاحب الفكرة: <span class="blank"></span> وطالب التواصل: <span class="blank"></span>، عبر مجتمع إتقان، بتاريخ <span class="blank"></span>.</p>
+      <ol>
+        <li>يطّلع طالب التواصل على تفاصيل الفكرة لغرض واحد: النظر في الشراكة.</li>
+        <li>لا يستخدم الفكرة ولا ينشرها ولا ينقلها إلى غيره دون إذن مكتوب من صاحبها.</li>
+        <li>لا يشمل ذلك ما كان معروفًا منشورًا قبل الاطلاع.</li>
+        <li>تبقى الاتفاقية سارية سنتين من تاريخها، وإن لم تتم الشراكة.</li>
+        <li>والله شهيد على ما نقول، ﴿يَا أَيُّهَا الَّذِينَ آمَنُوا أَوْفُوا بِالْعُقُودِ﴾.</li>
+      </ol>
+      <p class="meta" style="font-family:'Segoe UI',Tahoma,sans-serif">في الموقع الحقيقي: يوافق عليها الطرف الآخر بضغطة، ويُحفظ تاريخ الموافقة مع الطلب.</p>
+    </div>
+  </main>
+</div>
+<script src="common.js"></script>
+</body>
+</html>

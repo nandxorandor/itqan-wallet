@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>طلباتي: تصور</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.req { border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin-top:10px; background:#fcfdfd; }
+.req .acts { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+.req.accepted { border-color:#9fd6c3; background:#f3fbf8; }
+.req.declined { opacity:.6; }
+.reveal { display:none; margin-top:10px; }
+.req.accepted .reveal { display:block; }
+.req.accepted .acts.first { display:none; }
+.statusbar { display:flex; gap:6px; flex-wrap:wrap; align-items:center; margin-top:8px; }
+</style>
+</head>
+<body data-page="requests">
+<div id="hero"></div>
+<div class="wrap">
+  <aside id="aside"></aside>
+  <main>
+    <div id="tabs"></div>
+
+    <div class="why"><b>صفحة خاصة بك:</b> الطلبات الواردة على فرصك، والطلبات التي أرسلتها. القبول يكشف وسائل التواصل للطرفين، والاعتذار يُرسل ردًّا لطيفًا جاهزًا، فلا يبقى أحد معلّقًا.</div>
+
+    <div class="card">
+      <div class="row">
+        <div class="body">
+          <h2 style="margin:0">واردة على فرصتك</h2>
+          <div class="title">مساعد تلاوة صوتي: أبحث عن شريك في تصميم الواجهة</div>
+          <div class="statusbar" id="sb">
+            <span class="meta">الحالة:</span>
+            <button class="fchip on" data-s="open">مفتوحة</button>
+            <button class="fchip" data-s="talk">قيد التواصل</button>
+            <button class="fchip" data-s="done">اكتملت</button>
+            <span class="meta" id="sbNote"></span>
+          </div>
+        </div>
+        <div class="badges"><span class="type t-partner">🤝 أبحث عن شريك</span></div>
+      </div>
+
+      <div class="req" id="r1">
+        <div class="row">
+          <div class="av c4">م</div>
+          <div class="body">
+            <div class="title"><a href="profile.html?p=maryam">مريم عادل</a> <span class="meta">· مصممة UI/UX · ⭐ توصيتان · منذ ساعتين</span></div>
+            <div class="ex">صممت واجهات ثلاثة تطبيقات قرآنية منشورة، ويهمني أن أكون شريكة بنسبة في مشروع تعليمي. متاحة 10 ساعات أسبوعيًا.</div>
+            <div class="chips"><span class="chip">تشارك: واتساب، تيليجرام</span><span class="chip">مساءً</span><span class="chip">✓ وافقت على اتفاقية السرية</span></div>
+          </div>
+        </div>
+        <div class="acts first">
+          <button class="btn small" data-accept="r1">✓ قبول وكشف وسائل التواصل</button>
+          <button class="btn small red" data-decline="r1">اعتذار لطيف</button>
+          <a class="btn small gray" href="profile.html?p=maryam">عرض الملف</a>
+        </div>
+        <div class="reveal">
+          <div class="channels">
+            <span class="ch open"><i>💬</i>واتساب <span class="v">‎+966 50 000 0000</span></span>
+            <span class="ch open"><i>✈️</i>تيليجرام <span class="v">‎@maryam_ux</span></span>
+          </div>
+          <p class="meta" style="margin:6px 0">وظهرت لها وسائل التواصل التي اخترتها أنت، وتفاصيل فكرتك المخفية.</p>
+          <div class="acts">
+            <a class="btn small light" href="templates.html">📄 نماذج الاتفاقيات</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="req" id="r2">
+        <div class="row">
+          <div class="av c3">خ</div>
+          <div class="body">
+            <div class="title"><a href="profile.html?p=khaled">خالد منصور</a> <span class="meta">· تسويق رقمي · منذ يوم</span></div>
+            <div class="ex">لست مصممًا، لكن أستطيع المساعدة في التسويق بعد اكتمال الواجهة إن احتجت.</div>
+            <div class="chips"><span class="chip">يشارك: البريد</span></div>
+          </div>
+        </div>
+        <div class="acts first">
+          <button class="btn small" data-accept="r2">✓ قبول وكشف وسائل التواصل</button>
+          <button class="btn small red" data-decline="r2">اعتذار لطيف</button>
+          <a class="btn small gray" href="profile.html?p=khaled">عرض الملف</a>
+        </div>
+        <div class="reveal">
+          <div class="channels"><span class="ch open"><i>✉️</i>البريد <span class="v">khaled@example.com</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>طلبات أرسلتها</h2>
+      <div class="req">
+        <div class="row">
+          <div class="av c1">ي</div>
+          <div class="body">
+            <div class="title"><a href="opportunity.html">تطبيق أندرويد لتعليم القرآن</a> <span class="meta">· يوسف الحربي</span></div>
+            <div class="meta">أُرسل منذ يوم</div>
+          </div>
+          <span class="status s-talk">بانتظار الرد</span>
+        </div>
+      </div>
+      <div class="req declined">
+        <div class="row">
+          <div class="av c6">ج</div>
+          <div class="body">
+            <div class="title">مطور Flutter بدوام جزئي <span class="meta">· جمعية النور</span></div>
+            <div class="ex">«جزاك الله خيرًا على اهتمامك. وجدنا من يناسب هذه الفرصة، ونرجو أن نتعاون في فرصة قادمة.»</div>
+          </div>
+          <span class="status s-done">اعتذار لطيف</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="modal" id="recModal">
+  <div class="mbox form">
+    <h2>اكتملت الفرصة 🎉</h2>
+    <p class="meta" style="margin:0">من انضم إليك؟ تُعرض الفرصة على أنها «اكتملت»، ويمكن لكل منكما أن يكتب توصية للآخر.</p>
+    <label>الشريك</label>
+    <select><option>مريم عادل</option><option>شخص من خارج إتقان</option></select>
+    <label>توصية قصيرة <span class="hint">(اختيارية، وتظهر في ملفه)</span></label>
+    <textarea>التزام عالٍ، وفهم سريع لاحتياج المستخدم.</textarea>
+    <label class="hint" style="font-weight:400"><input type="checkbox" checked> انقل المشروع إلى «مشاريع نشطة» ليتابعه المجتمع</label>
+    <div class="mfoot"><button class="btn gray" data-close>لاحقًا</button><button class="btn" id="recSave">حفظ</button></div>
+  </div>
+</div>
+
+<script src="common.js"></script>
+<script>
+document.addEventListener("click", e => {
+  const a = e.target.closest("[data-accept]");
+  if (a) { document.getElementById(a.dataset.accept).classList.add("accepted"); toast("قُبل الطلب ✓ ظهرت وسائل التواصل لكليكما."); setStatus("talk"); }
+  const d = e.target.closest("[data-decline]");
+  if (d) { const r = document.getElementById(d.dataset.decline); r.classList.add("declined"); r.querySelector(".acts.first").innerHTML = '<span class="meta">أُرسل اعتذار لطيف جاهز.</span>'; }
+  if (e.target.closest("#recModal [data-close]") || e.target.id === "recModal") document.getElementById("recModal").classList.remove("open");
+});
+function setStatus(s) {
+  document.querySelectorAll("#sb [data-s]").forEach(x => x.classList.toggle("on", x.dataset.s === s));
+  document.getElementById("sbNote").textContent = s === "talk" ? "تظهر في القائمة: قيد التواصل" : s === "done" ? "تظهر في القائمة: اكتملت" : "";
+}
+document.getElementById("sb").addEventListener("click", e => {
+  const b = e.target.closest("[data-s]"); if (!b) return;
+  setStatus(b.dataset.s);
+  if (b.dataset.s === "done") document.getElementById("recModal").classList.add("open");
+});
+document.getElementById("recSave").addEventListener("click", () => {
+  document.getElementById("recModal").classList.remove("open");
+  toast("حُفظت التوصية ✓ وظهرت الفرصة في القائمة على أنها «اكتملت».");
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>انشر فرصة: تصور</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="new">
+<div id="hero"></div>
+<div class="wrap">
+  <aside id="aside"></aside>
+  <main>
+    <div id="tabs"></div>
+
+    <div class="grid2" style="grid-template-columns:1fr 360px">
+      <div class="card form">
+        <h2>انشر فرصة</h2>
+        <div class="why" style="margin:6px 0 0"><b>نموذج قصير بدل موضوع مفتوح:</b> فتُعرض كل الفرص بشكل واحد، ويمكن تصفيتها والبحث فيها.</div>
+
+        <label>نوع الفرصة</label>
+        <div class="seg" id="kind">
+          <button type="button" class="on" data-t="partner">🤝 أبحث عن شريك</button>
+          <button type="button" data-t="offer">🙋 أعرض خبرتي</button>
+          <button type="button" data-t="job">💼 وظيفة مدفوعة</button>
+          <button type="button" data-t="vol">🌱 تطوع</button>
+          <button type="button" data-t="fund">💰 تمويل</button>
+        </div>
+
+        <label>العنوان</label>
+        <input type="text" id="title" value="تطبيق أندرويد لتعليم القرآن، جاهز بنسبة 90%: أبحث عن شريك للنشر والتسويق">
+
+        <label>نبذة عامة <span class="hint">(يراها الجميع، فاكتب ما تحتاجه لا تفاصيل فكرتك)</span></label>
+        <textarea id="pub">تطبيق مكتمل ومجرَّب، وأحتاج شريكًا يكمل معي الجزء التجاري: النشر والتسويق ونموذج الربح.</textarea>
+
+        <div class="switch">
+          <input type="checkbox" id="hide" checked>
+          <div>
+            <b>إخفاء تفاصيل الفكرة</b>
+            <div class="hint">لا يراها إلا من تقبل طلبه. ويمكنك أن تطلب منه قبلها الموافقة على اتفاقية السرية المبسطة.</div>
+          </div>
+        </div>
+        <div id="privWrap">
+          <label>التفاصيل المخفية <span class="hint">(فكرة المشروع، وما يميزه، والروابط)</span></label>
+          <textarea class="private" placeholder="اكتب هنا ما لا تريد أن يراه الجميع..."></textarea>
+        </div>
+
+        <label>ما الذي تحتاجه؟ <span class="hint">(اختر أو أضف)</span></label>
+        <div class="seg" data-multi id="needs">
+          <button type="button" class="on">نشر على Google Play</button>
+          <button type="button" class="on">تسويق</button>
+          <button type="button" class="on">نموذج ربح</button>
+          <button type="button">برمجة</button>
+          <button type="button">تصميم</button>
+          <button type="button">مراجعة شرعية</button>
+          <button type="button">تمويل</button>
+        </div>
+
+        <label>نوع الشراكة أو المقابل</label>
+        <select id="deal">
+          <option>شريك بنسبة من الأرباح (مشاركة)</option>
+          <option>مضاربة: مال من طرف، وعمل من طرف</option>
+          <option>بأجر</option>
+          <option>تطوع</option>
+          <option>يُتفق عليه</option>
+        </select>
+
+        <label>نموذج المشروع</label>
+        <div class="seg" id="model">
+          <button type="button" data-m="ربحي">ربحي</button>
+          <button type="button" data-m="وقفي">وقفي / مجاني</button>
+          <button type="button" class="on" data-m="مختلط">مختلط</button>
+        </div>
+
+        <div class="switch" style="background:#eef4ff;border-color:#cddcf6">
+          <input type="checkbox" id="waqf" checked>
+          <div><b>أتعهد بنسبة وقفية</b> <span class="hint">(اختياري)</span>
+            <div class="hint">نسبة من الأرباح لعمل خيري أو لدعم مجتمع إتقان: <input type="text" value="5%" style="width:56px;display:inline-block;padding:2px 6px"></div>
+          </div>
+        </div>
+
+        <label>الالتزام المطلوب</label>
+        <input type="text" id="time" value="5–8 ساعات أسبوعيًا، لمدة 6 أشهر على الأقل">
+
+        <label>تُغلق تلقائيًا بعد</label>
+        <select><option>60 يومًا (يُسأل صاحبها قبلها)</option><option>30 يومًا</option><option>90 يومًا</option></select>
+
+        <div class="mfoot" style="justify-content:flex-start">
+          <button class="btn" type="button" onclick="toast('نُشرت الفرصة ✓ (في التصور فقط)'); setTimeout(()=>location.href='opportunity.html',1500)">انشر الفرصة</button>
+          <button class="btn gray" type="button" onclick="toast('حُفظت مسودة.')">احفظ مسودة</button>
+        </div>
+      </div>
+
+      <div class="sticky">
+        <p class="meta" style="margin:0 0 6px">معاينة: هكذا تظهر في القائمة</p>
+        <div class="card">
+          <div class="row">
+            <div class="av c1">أ</div>
+            <div class="body">
+              <div class="title" id="pTitle"></div>
+              <div class="meta">أنت · الآن</div>
+              <div class="ex" id="pPub"></div>
+              <div class="chips" id="pNeeds"></div>
+              <div class="facts"><span>الشراكة: <b id="pDeal"></b></span><span id="pWaqf" class="waqf">نسبة وقفية 5%</span></div>
+              <span class="lock" id="pLock">🔒 تفاصيل الفكرة مخفية، وتُشارك بعد قبول طلب التواصل</span>
+            </div>
+          </div>
+          <div class="chips" style="margin-top:10px"><span class="type" id="pType"></span><span class="status s-open">مفتوحة</span></div>
+        </div>
+        <div class="why"><b>لاحظ:</b> لا رقم هاتف ولا بريد في المنشور. وسائل التواصل في ملفك، ولا تظهر إلا لمن تقبل طلبه.</div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="common.js"></script>
+<script>
+const TYPES = { partner:["t-partner","🤝 أبحث عن شريك"], offer:["t-offer","🙋 أعرض خبرتي"], job:["t-job","💼 وظيفة مدفوعة"], vol:["t-vol","🌱 تطوع"], fund:["t-fund","💰 تمويل"] };
+const $ = id => document.getElementById(id);
+function preview() {
+  $("pTitle").textContent = $("title").value;
+  $("pPub").textContent = $("pub").value;
+  $("pDeal").textContent = $("deal").value;
+  $("pNeeds").innerHTML = [...document.querySelectorAll("#needs .on")].map(b => `<span class="chip need">${b.textContent}</span>`).join("");
+  const t = document.querySelector("#kind .on").dataset.t;
+  $("pType").className = "type " + TYPES[t][0]; $("pType").textContent = TYPES[t][1];
+  const hide = $("hide").checked;
+  $("pLock").style.display = hide ? "" : "none";
+  $("privWrap").style.display = hide ? "" : "none";
+  $("pWaqf").style.display = $("waqf").checked ? "" : "none";
+}
+document.addEventListener("input", preview);
+document.addEventListener("change", preview);
+document.addEventListener("segchange", preview);
+preview();
+</script>
+</body>
+</html>

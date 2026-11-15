@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>banner</title>
+<style>
+* { box-sizing:border-box; }
+html, body { margin:0; width:900px; height:282px; overflow:hidden; }
+body { background:linear-gradient(135deg,#17705c,#0e4f41); color:#fff; font-family:"Segoe UI",Tahoma,sans-serif; text-align:center; padding-top:22px; }
+.logo { height:50px; background:#fff; border-radius:10px; padding:4px 8px; }
+h1 { margin:12px 0 2px; font-size:27px; line-height:1.5; }
+.slogan { display:inline-block; font-size:20px; font-weight:700; color:#ffe9a8; height:36px; line-height:36px; }
+.chips { display:flex; justify-content:center; gap:8px; margin-top:10px; }
+.chips span { background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.28); border-radius:20px; padding:2px 12px; font-size:13.5px; }
+.cta { display:inline-block; margin-top:16px; background:#ffd76a; color:#3d2e00; font-weight:700; font-size:15px; padding:8px 22px; border-radius:8px; }
+</style>
+</head>
+<body>
+<img class="logo" src="https://community.itqan.dev/assets/logo-hppso2lt.png" alt="">
+<h1>«شراكات واستثمار»: حيث تلتقي الأفكار بمن يبنيها ويموّلها</h1>
+<div class="slogan" id="s"></div>
+<div class="chips"><span>🔒 أخفِ فكرتك</span><span>🤝 تواصل بموافقة الطرفين</span><span>🧭 فرص منظَّمة بحالة واضحة</span><span>🌱 نسبة وقفية</span></div>
+<div class="cta">شاهد النموذج التجريبي ›</div>
+<script>
+const S = ["فكرتك في الدرج؟ أخرجها بشريك.", "اطلب شريكًا… وفكرتك في أمان.", "لا أرقام في العلن، التواصل بموافقة الطرفين.", "اعرض مهارتك، ودع المشاريع تجدك.", "ربحٌ مبارك… وأجرٌ لا ينقطع.", "يدٌ تبني، ويدٌ تموّل، والبركة في الاجتماع."];
+// Draw slogan i at visibility v (0 = hidden, 1 = fully shown). Used by the capture script.
+window.show = (i, v) => {
+  const el = document.getElementById("s");
+  el.textContent = S[i];
+  el.style.opacity = v;
+  el.style.transform = `translateY(${(1 - v) * -6}px)`;
+};
+window.COUNT = S.length;
+show(0, 1);
+</script>
+</body>
+</html>
